@@ -1,0 +1,28 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1476718775312.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8FCB66",
+    "lastKnownWriteTime" : 4389380864,
+    "last_content_update" : 1476718775312,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "13issnwld5",
+        "caption" : "submit.df",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=submit.df&cache_key=13issnwld5",
+        "displayedObservations" : "418",
+        "environment" : "",
+        "object" : "submit.df",
+        "totalObservations" : "418",
+        "variables" : "2"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

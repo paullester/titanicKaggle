@@ -1,0 +1,9 @@
+{
+    "path" : "~/datascience/titanic",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

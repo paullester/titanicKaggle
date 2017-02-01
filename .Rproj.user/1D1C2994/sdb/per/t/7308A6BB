@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#helper functions\n\n\n\ngetTitle <- function(Name) {\n  Name <- as.character(Name)\n  if (length(grep(\"Miss.\", Name)) >0 ){\n    return (\"Miss.\")\n  } else if (length(grep(\"Master.\", Name))>0){\n    return(\"Master.\")\n  } else if (length(grep(\"Mrs.\", Name))>0){\n    return(\"Mrs.\")\n  } else if (length(grep(\"Mr.\", Name))>0){\n    return(\"Mr.\")\n  } else {\n    return (\"Other\")\n  }\n}\n\n\n##trash code\n\n\n#convert ticket data to factor\ndata.combined$Ticket <- as.character(data.combined$Ticket)\ndata.combined$Ticket[1:20]\n\n#first char of ticket?\nticket.first.char <- ifelse(data.combined$Ticket == \"\",\" \", substr(data.combined$Ticket,1,1))\nunique(ticket.first.char)\n#make into factor\ndata.combined$ticket.first.char  <-as.factor(ticket.first.char)\n\n#high level plot\nggplot(data.combined[1:891,], aes(x=ticket.first.char,fill=Survived))+\n  geom_bar(width = 0.5) +\n  ggtitle(\"survivability by ticket first char\")+\n  xlab(\"ticket first char\")+\n  ylab(\"Total Count\")+\n  labs(fill=\"Survived\")\n\n#pivot on pclass\nggplot(data.combined[1:891,], aes(x=ticket.first.char,fill=Survived))+\n  geom_bar(width = 0.5) +\n  facet_wrap(~Pclass) +\n  ggtitle(\"survivability by ticket first char\")+\n  xlab(\"ticket first char\")+\n  ylab(\"Total Count\")+\n  labs(fill=\"Survived\")\n\n\n\n#what about fares\nsummary(data.combined$Fare)\nlength(unique(data.combined$Fare))\n\n#can't make fare a factor - lets do histogram\nggplot(data.combined[1:891,], aes(x=Fare,fill=Survived))+\n  geom_histogram(binwidth = 5) +\n  ggtitle(\"Combined Fare Distribution\")+\n  xlab(\"Fare\")+\n  ylab(\"Total Count\")+\n  labs(fill=\"Survived\")\n\n\n\n\n#check predictive power\nggplot(data.combined[1:891,], aes(x=Fare,fill=Survived))+\n  geom_histogram(binwidth = 5) +\n  facet_wrap(~Pclass + title) +\n  ggtitle(\"survivability by fare\")+\n  xlab(\"fare\")+\n  ylab(\"Total Count\")+\n  labs(fill=\"Survived\")\n\n\nstr(data.combined$Cabin)\ndata.combined$Cabin <- as.character(data.combined$Cabin)\ndata.combined[which(data.combined$Cabin ==\"\"), \"Cabin\"] <- \"U\"\n\ndata.combined$Cabin[1:100]\ncabin.first.char <- as.factor(substr(data.combined$Cabin,1,1))\nstr(cabin.first.char)\nlevels(cabin.first.char)\n\ndata.combined$cabin.first.char <- cabin.first.char\n\nggplot(data.combined[1:891,], aes(x=cabin.first.char,fill=Survived))+\n  geom_bar() +\n  ggtitle(\"survivability by cabin.first.char\")+\n  xlab(\"cabin.first.char\")+\n  ylab(\"Total Count\")+\n  labs(fill=\"Survived\")\n\n\nggplot(data.combined[1:891,], aes(x=Fare,fill=Survived))+\n  geom_histogram(binwidth = 5) +\n  facet_wrap(~Pclass + title) +\n  ggtitle(\"survivability by fare\")+\n  xlab(\"fare\")+\n  ylab(\"Total Count\")+\n  labs(fill=\"Survived\")\n\ndata.combined$cabin.multiple <- as.factor(ifelse(str_detect(data.combined$Cabin, \" \"), \"Y\", \"N\"))\n\n\n\n\n\n#is fare an indicator?\nggplot(first.mr.df, aes(x=Fare, fill = Survived)) +\n  geom_density(alpha=0.5) +\n  ggtitle(\"1st class mr. survival rates\")\n\n\n\n\ninstall.packages(\"infotheo\")\n\nlibrary(infotheo)\n\nmutinformation(rf.label, data.combined$Pclass[1:891])\n\n",
+    "created" : 1481173121272.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1947313760",
+    "id" : "7308A6BB",
+    "lastKnownWriteTime" : 1481265429,
+    "last_content_update" : 1481265429929,
+    "path" : "~/datascience/titanic/titanicHelper.R",
+    "project_path" : "titanicHelper.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
